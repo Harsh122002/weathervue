@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getWeatherData } from "../Services/weatherService";
 import WeatherCard from "../Components/WeatherCard";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
   const [location, setLocation] = useState("");
@@ -16,17 +17,24 @@ const Home = () => {
   };
 
   return (
-    <div className="p-4">
-      <input
-        type="text"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        placeholder="Enter location"
-        className="border p-2 mr-2"
-      />
-      <button onClick={handleSearch} className="bg-blue-500 text-white p-2">
-        Search
-      </button>
+    <div className="container mt-4">
+      <h1 className="text-center mb-4">Simple Weather </h1>
+
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          placeholder="Enter location"
+          className="form-control rounded"
+        />{" "}
+        &nbsp;
+        <div className="input-group-append">
+          <button onClick={handleSearch} className="btn btn-primary">
+            Search
+          </button>
+        </div>
+      </div>
       {weather && <WeatherCard weather={weather} />}
     </div>
   );
